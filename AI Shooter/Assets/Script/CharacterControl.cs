@@ -35,6 +35,7 @@ public class CharacterControl : MonoBehaviour {
         {
             Fire();
         }
+        
         if(bullets!=null && bullets.Count!=0)
         {
             foreach (var bullet in bullets)
@@ -63,8 +64,8 @@ public class CharacterControl : MonoBehaviour {
 
     private void Move(GameObject go,int dir,Vector3 forward,float boostSpeed)
     {
-
-        go.transform.position +=dir * forward * Time.deltaTime * boostSpeed;
+        go.GetComponent<Rigidbody2D>().AddForce((Vector2)forward * boostSpeed * dir);
+       // go.transform.position +=dir * forward * Time.deltaTime * boostSpeed;
     }
     
 
